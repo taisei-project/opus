@@ -56,6 +56,10 @@ opus_cflags = [
     '-DVAR_ARRAYS',
 ]
 
+if cc.has_function('lrintf', dependencies : m_dep)
+    opus_cflags += ['-DHAVE_LRINT']
+endif
+
 if want_simd
     simd = [
         ['sse1',    'xmmintrin.h', sse1_flags,   '-DOPUS_X86_MAY_HAVE_SSE',    '-DOPUS_X86_PRESUME_SSE'],
