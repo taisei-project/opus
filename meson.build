@@ -51,10 +51,13 @@ endif
 
 opus_cflags = [
     '-DCUSTOM_MODES',
-    '-DENABLE_HARDENING',
     '-DOPUS_BUILD',
     '-DVAR_ARRAYS',
 ]
+
+if host_machine.system() != 'emscripten'
+    opus_cflags += ['-DENABLE_HARDENING']
+endif
 
 if cc.has_function('lrintf', dependencies : m_dep)
     opus_cflags += ['-DHAVE_LRINT']
