@@ -55,7 +55,9 @@ opus_cflags = [
     '-DVAR_ARRAYS',
 ]
 
-if host_machine.system() != 'emscripten'
+if host_machine.system() == 'emscripten'
+    want_simd = false
+else
     opus_cflags += ['-DENABLE_HARDENING']
 endif
 
