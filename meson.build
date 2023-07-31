@@ -645,6 +645,11 @@ else
   endif
 endif
 
+have_arm_intrinsics_or_asm = have_arm_ne10
+if (intrinsics_support.length() + asm_optimization.length() + inline_optimization.length()) > 0
+  have_arm_intrinsics_or_asm = true
+endif
+
 # extract source file lists from .mk files
 mk_files = [
   'opus_headers.mk', 'opus_sources.mk',
