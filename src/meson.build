@@ -25,3 +25,6 @@ libopus_dep = declare_dependency(
     link_with : opus_lib,
     version : meson.project_version(),
 )
+
+opus_dep = libopus_dep  # for compat with upstream
+meson.override_dependency('opus', opus_dep)
