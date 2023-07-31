@@ -562,6 +562,11 @@ else
   endif
 endif
 
+have_arm_intrinsics_or_asm = have_arm_ne10
+if (intrinsics_support.length() + asm_optimization.length() + inline_optimization.length()) > 0
+  have_arm_intrinsics_or_asm = true
+endif
+
 # extract source file lists from .mk files
 mk_files = ['silk_sources.mk', 'opus_headers.mk', 'opus_sources.mk', 'silk_headers.mk', 'celt_sources.mk', 'celt_headers.mk']
 lines = run_command('meson/read-sources-list.py', mk_files, check: true).stdout().strip().split('\n')

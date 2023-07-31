@@ -28,11 +28,6 @@ foreach intr_name : ['sse', 'sse2', 'sse4_1', 'neon_intr']
       install: false)
 endforeach
 
-have_arm_intrinsics_or_asm = have_arm_ne10
-if (intrinsics_support.length() + asm_optimization.length() + inline_optimization.length()) > 0
-  have_arm_intrinsics_or_asm = true
-endif
-
 if host_cpu_family in ['arm', 'aarch64'] and have_arm_intrinsics_or_asm
   if opus_conf.has('OPUS_HAVE_RTCD')
     celt_sources +=  sources['CELT_SOURCES_ARM_RTCD']
