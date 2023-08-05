@@ -19,7 +19,7 @@ opus_lib = library('opus',
   include_directories: opus_includes,
   link_whole: [celt_lib, silk_lib, dnn_lib],
   dependencies: libm,
-  install: true)
+  install: not meson.is_subproject())
 
 opus_dep = declare_dependency(link_with: opus_lib,
   include_directories: opus_public_includes)
