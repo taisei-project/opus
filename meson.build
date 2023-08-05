@@ -607,6 +607,7 @@ pkg_install_dir = '@0@/pkgconfig'.format(get_option('libdir'))
 configure_file(input : 'opus.pc.in',
   output : 'opus.pc',
   configuration : pkgconf,
+  install: not meson.is_subproject(),
   install_dir : pkg_install_dir)
 
 # The uninstalled one has hardcoded libtool + static lib stuff, skip it for now
