@@ -10,4 +10,6 @@ if opt_custom_modes
   opus_headers += ['opus_custom.h']
 endif
 
-install_headers(opus_headers, subdir: 'opus')
+if not meson.is_subproject()
+    install_headers(opus_headers, subdir: 'opus')
+endif
