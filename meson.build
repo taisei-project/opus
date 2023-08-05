@@ -26,7 +26,7 @@ if host_system == 'windows'
   endif
 endif
 
-if cc.get_argument_syntax() == 'gnu'
+if cc.get_argument_syntax() == 'gnu' and host_system != 'emscripten'
   add_project_arguments('-D_FORTIFY_SOURCE=2', language: 'c')
 endif
 
@@ -43,7 +43,7 @@ if cc.get_argument_syntax() != 'msvc'
 
   # On Windows, -fstack-protector-strong adds a libssp-0.dll dependency and
   # prevents static linking
-  if host_system != 'windows'
+  if host_system != 'windows' and host_system != 'emscripten'
     additional_c_args += ['-fstack-protector-strong']
   endif
 endif
