@@ -680,11 +680,15 @@ if not opt_tests.disabled()
   subdir('tests')
 endif
 
+if not meson.is_subproject()
+
 pkg = import('pkgconfig')
 pkg.generate(opus_lib,
   description: 'Opus IETF audio codec (floating-point build)',
   subdirs: 'opus',
 )
+
+endif
 
 doxygen = find_program('doxygen', required: get_option('docs'))
 if doxygen.found()
