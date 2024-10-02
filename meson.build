@@ -655,7 +655,7 @@ mk_files = [
   'opus_headers.mk', 'opus_sources.mk',
   'silk_headers.mk', 'silk_sources.mk',
   'celt_sources.mk', 'celt_headers.mk',
-  'lpcnet_headers.mk', 'lpcnet_sources.mk',
+  # 'lpcnet_headers.mk', 'lpcnet_sources.mk',
 ]
 lines = run_command('meson/read-sources-list.py', mk_files, check: true).stdout().strip().split('\n')
 sources = {}
@@ -669,7 +669,8 @@ endforeach
 subdir('include')
 subdir('celt')
 subdir('silk')
-subdir('dnn')
+# subdir('dnn')
+dnn_lib = []
 subdir('src')
 
 configure_file(output: 'config.h', configuration: opus_conf)
