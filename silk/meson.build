@@ -55,7 +55,7 @@ foreach intr_name : ['sse4_1', 'avx2', 'neon_intr']
       install: false)
 endforeach
 
-silk_c_args = []
+silk_c_args = ['-DOPUS_EXPORT=']
 if host_machine.system() == 'windows'
   silk_c_args += ['-DDLL_EXPORT']
 endif

@@ -45,7 +45,7 @@ foreach intr_name : ['sse2', 'sse4_1', 'avx2', 'neon_intr', 'dotprod_intr']
       install: false)
 endforeach
 
-dnn_c_args = []
+dnn_c_args = ['-DOPUS_EXPORT=']
 if host_machine.system() == 'windows'
   dnn_c_args += ['-DDLL_EXPORT']
 endif

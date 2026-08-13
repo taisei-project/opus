@@ -45,7 +45,7 @@ if host_cpu_family in ['arm', 'aarch64'] and have_arm_intrinsics_or_asm
   endif
 endif
 
-celt_c_args = []
+celt_c_args = ['-DOPUS_EXPORT=']
 if host_system == 'windows'
   celt_c_args += ['-DDLL_EXPORT']
 endif
